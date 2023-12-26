@@ -1,6 +1,8 @@
 package com.akubuof.memorizerbuddy.fxmlcontrollers.components;
 
 import com.akubuof.memorizerbuddy.AppManager;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -13,14 +15,16 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Header extends HBox {
+public class MBHeader extends HBox {
     @FXML
     private Label titleLabel;
     @FXML
     private Button backButton;
     @FXML
     private ImageView backButtonImage;
-    public Header() {
+
+    private EventHandler<ActionEvent> navigateAction;
+    public MBHeader() {
         FXMLLoader fxmlLoader = new FXMLLoader(AppManager.getResource("fxml/components/header.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -30,17 +34,10 @@ public class Header extends HBox {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        configureComponents();
-
     }
 
-    public void configureComponents() {
-        backButton.setOnAction(e -> navigateBack());
-    }
-
-    public void navigateBack() {
-        System.out.println("Going Back");
+    public void setNavigateAction(EventHandler<ActionEvent> action) {
+        backButton.setOnAction(action);
     }
 
     public void setTitle(String title) {
@@ -65,11 +62,7 @@ public class Header extends HBox {
         return null;
     }
 
-    public void setBackButtonIsVisible(Boolean visible) {
-        backButton.setVisible(visible);
-    }
-
-    public Boolean getBackButtonIsVisible() {
-        return backButton.isVisible();
+    public void removeBackButton() {
+        this.getChildren().remove(backButton);
     }
 }
