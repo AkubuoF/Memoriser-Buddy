@@ -1,7 +1,10 @@
 package com.akubuof.memorizerbuddy;
 
+import com.akubuof.memorizerbuddy.fxmlcontrollers.scenes.CreateOrModifyView;
+import com.akubuof.memorizerbuddy.others.ConfigureSceneAction;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -32,9 +35,15 @@ public class AppManager {
         return (Stage) node.getScene().getWindow();
     }
 
-    public static void changeScene(URL sceneURL, Node node) {
-        Scene scene = AppManager.getScene(sceneURL);
-        Stage stage = getStageFrom(node);
-        stage.setScene(scene);
+    public static void changeScene(URL sceneURL, Node node, ConfigureSceneAction action) {
+        FXMLLoader fxmlLoader = new FXMLLoader(sceneURL);
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            action.config(fxmlLoader.getController());
+            Stage stage = getStageFrom(node);
+            stage.setScene(scene);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

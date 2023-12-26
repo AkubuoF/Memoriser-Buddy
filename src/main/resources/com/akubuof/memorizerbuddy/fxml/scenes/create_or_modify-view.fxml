@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.akubuof.memorizerbuddy.fxmlcontrollers.scenes.CreateOrModifyView"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="400.0" prefWidth="600.0" alignment="CENTER" spacing="20">
 
-</AnchorPane>
+    <Label fx:id="label" text="" />
+    <Button fx:id="button" text="click me" onAction="#displayHelloWorld"/>
+
+</VBox>

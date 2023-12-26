@@ -10,4 +10,5 @@ module com.akubuof.memorizerbuddy {
     exports com.akubuof.memorizerbuddy;
     exports com.akubuof.memorizerbuddy.fxmlcontrollers.components;
     exports com.akubuof.memorizerbuddy.fxmlcontrollers.scenes;
+    exports com.akubuof.memorizerbuddy.others;
 }
