@@ -11,6 +11,8 @@ public class AppLauncher extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(AppManager.getResource("fxml/scenes/home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Debugging...");
+        stage.setMinWidth(500);
+        stage.setMinHeight(300);
         stage.setScene(scene);
         stage.show();
     }
