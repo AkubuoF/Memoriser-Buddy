@@ -46,4 +46,16 @@ public class AppManager {
             throw new RuntimeException(e);
         }
     }
+
+    public static <T> void setAsController(URL fxmlPath, T controller) {
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlPath);
+        fxmlLoader.setRoot(controller);
+        fxmlLoader.setController(controller);
+
+        try {
+            fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

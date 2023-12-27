@@ -25,15 +25,7 @@ public class MBHeader extends HBox {
 
     private EventHandler<ActionEvent> navigateAction;
     public MBHeader() {
-        FXMLLoader fxmlLoader = new FXMLLoader(AppManager.getResource("fxml/components/header.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        AppManager.setAsController(AppManager.getResource("fxml/components/header.fxml"), this);
     }
 
     public void setNavigateAction(EventHandler<ActionEvent> action) {
